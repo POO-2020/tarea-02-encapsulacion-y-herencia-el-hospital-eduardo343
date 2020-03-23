@@ -1,33 +1,22 @@
-export default class Tiempo {
-    /**
-     * 
-     * @param {number} hora 
-     * @param {number} minuto 
-     * @param {string} periodo 
-     */
-    constructor(hora, minuto, periodo){
-        this._horas = hora
-        this._minutos = minuto
-        this._periodos = periodo
-        
-        console.log("Elemento iniciaizado")
+export default class Tiempo{
+    constructor(hora, minutos, periodo)
+    {
+        this._hora = hora
+        this._minutos = minutos
+        this._periodo = periodo
     }
+
     getFormato12(){
-        return  `${this._horas}:${this._minutos} ${this._periodos}`
+        return(`${this._hora} : ${this._minutos} ${this._periodo}`)
     }
     getFormato24(){
-        let hora24
-        let suma  
-        let resta
-        if( (this._horas == 12)&&(this._periodos == "AM") ){
-            resta = this._horas - 12
-            hora24 = resta
-        }else if( (this._horas >= 1)&&(this._periodos == "PM")){
-            suma = this._horas + 12
-            hora24 = suma
-        }else{
-            return `${this._horas}:${this._minutos} ${this._periodos}`
+        if(this._periodo=="pm")
+        {
+            let newHora=this._hora+12
+            return(`${newHora} : ${this._minutos}`)
         }
-        return `${hora24}:${this._minutos} ${this._periodos}`
+        else{
+            return(`${this._hora} : ${this._minutos}`)
+        }
     }
 }
