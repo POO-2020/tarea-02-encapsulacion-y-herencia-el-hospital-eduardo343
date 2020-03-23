@@ -1,127 +1,113 @@
-import Tiempo from "./tiempo.js"
-import Fecha from "./fecha.js"
 import Nombre from "./nombre.js"
-import Paciente from "./paciente.js"
 import Doctor from "./doctor.js"
+import Paciente from "./paciente.js"
+import Fecha from "./fecha.js"
 import Cita from "./cita.js"
+import Tiempo from "./tiempo.js"
 import Hospital from "./hospital.js"
 import PacienteAsegurado from "./pacienteAsegurado.js"
 
-class Main{
+class Main{//${this.}
+
     constructor(){
+        this.testPepe = new Nombre("Pepe","Hernandez","Rodrigo")
+        this.testGarcia = new Nombre("Garcia", "Correas", "Flores")
+        this.testTiempo = new Tiempo(7,53,"pm")
 
-        this.nombreDoctor = new Nombre("Juan Manuel", "Michel", "Herrera")
-
-        this.horas = new Tiempo(11,30,"AM")
-
-        this.fechas = new Fecha(new Date(2001,4,30))
-
-        this.nombres = new Nombre("José Gabino", "Morales", "González")
-
-        this.fechaVigencia = new Fecha( new Date (2050,6,20) ) 
-
-        let datoDoctor = {
-            nombre: this.nombreDoctor,
-            especialidad: "Oftalmologo",
-            telefono: 3123194899,
-            cedula: 10203050
+        let datosPaciente = {
+            nombre: this.testPepe,
+            fechaNacimiento: new Fecha(new Date(2002,5,20)),
+            telefono: "312-526-2456"
         }
-        this.doctor1 = new Doctor(datoDoctor)
-
-        let datoPaciente = {
-            nombre: this.nombres,
-            fecha: this.fechas, 
-            telefono: 3123194899
+        let datosPacienteAsegurado = {
+            nombre: new Nombre("Leonardo","Isordia","Avila"),
+            fechaNacimiento: new Fecha(new Date(2009,7,11)),
+            telefono: "312-526-2456",
+            numeroPoliza: 1578,
+            fechaFinVigencia: new Fecha(new Date(2015,4,5)),
+            compañia: "Telcel"
         }
-        this.paciente = new Paciente(datoPaciente)
-
-        let datoDoctor2 = {
-            nombre: this.nombres, 
-            especialidad: "Oftalmologo", 
-            telefono: 3123194899, 
-            cedula: 10203050
+        let datosDoct = {
+            nombre: this.testGarcia,
+            especialidad: "Oftalmologia",
+            telefono: "312-457-3641",
+            cedula: "105413587"
         }
-        this.doctores = new Doctor(datoDoctor2)
+        let datosHospital = {
+            nombre: "Hospital Chido",
+            direccion: "Calle manzanas, Num #674"
+        }
+        this.testHosp = new Hospital(datosHospital)
+        this.paciente = new Paciente(datosPaciente)
+        this.testDoct = new Doctor(datosDoct)
+        this.pacienteAsegurado = new PacienteAsegurado(datosPacienteAsegurado)
 
-        let datoCita = {
-            fecha: this.fechas, 
-            hora: this.horas, 
-            doctor: this.doctor1, 
+        let datosCita = {
+            fecha: new Fecha(new Date(2002,5,20)),
+            hora: this.testTiempo,
+            doctor: this.testDoct,
             paciente: this.paciente
         }
-        this.citas = new Cita(datoCita)
 
-        let datoHospital = {
-            nombre: "Hospital Gab", 
-            direccion: "Av. San Fernando #312"
-        }
-        this.hospitales = new Hospital(datoHospital)
-
-        let datoPacienteAsegurado = {
-            nombre: new Nombre("Laura Elizabeth", "Pacheco", "Larios"),
-            fecha: new Fecha( new Date(2001,6,25) ), 
-            telefono: 3123194899,
-            numberPoliz: "S15482687D240356",
-            fechVigencia: this.fechaVigencia,
-            compa: "AT&A"
-        }
-        this.pacienteAsegurado = new PacienteAsegurado(datoPacienteAsegurado)
-
+        this.testCitaa = new Cita(datosCita)
     }
 
-    getTempo(){
-        console.log(`Son las ${this.horas.getFormato12()}`)
-        console.log(`Son las ${this.horas.getFormato24()}`)
-
-    }
-
-    getFecha(){
-        console.log(`Año ${this.fechas.getAños()}`)
-        console.log(`Meses ${this.fechas.getMeses()}`)
-        console.log(`Semanas ${this.fechas.getSemanas()}`)
-        console.log(`Días ${this.fechas.getDias()}`)
-        console.log(`Fecha ${this.fechas.getFecha()}`)
-        console.log(`Día ${this.fechas.getDiaFecha()}`)
-    }
-
-    getNombre(){
-        console.log(`Nombre ${this.nombres.getNombreCompleto()}`)
-        console.log(`Nombre ${this.nombres.getApellidoNombre()}`)
-        console.log(`Iniciales ${this.nombres.getIniciales()}`)
-    }
-
-    getPaciente(){
-        console.log(`Perfil ${this.paciente.getPerfil()}`)
-
-        this.pacienteAsegurado.getPerfil()
-    }
-
-    getDoctor(){
-        console.log(`${this.doctores.getPerfil()}`)
-    }
-
-    getCita(){
-        console.log(`${this.citas.getCita()}`)
-    }
-
-    
-    getHospital(){
-
-
-        // this.hospitales.getRegistrarDoctor(this.doctor1)
-        // this.hospitales.getRegistrarCitas(this.citas)
-
-        // console.log(this.hospitales._encontrarDoctor(this.doctor1))
-        // console.log(this.hospitales._encontrarIndiceDoctor(this.doctor1))
+    testNombre(){
         
+        console.log(this.testPepe.getNombreCompleto())
+        console.log(this.testPepe.getApellidoNombre())
+        console.log(this.testPepe.getIniciales())
 
-
-
-        // this.hospitales.getListarDoctores()
-        // this.hospitales.getListarCitas()
     }
 
+    testDoc(){
+        console.log(this.testDoct.getPerfil())
+    }
+
+    testPac(){
+        console.log(this.paciente.getPerfil())
+        //testPaciente Asegurado
+        console.log(this.pacienteAsegurado.getPerfil())
+    }
+    testCita(){
+        console.log(this.testCitaa.getCita())
+    }
+
+    testHospital(){
+        //tests 1
+        console.log(this.testHosp.buscarDoctor(this.testDoct))
+        console.log(this.testHosp.buscarCita(this.testCitaa))
+        console.log(this.testHosp.eliminarDoctor(this.testDoct))
+        console.log(this.testHosp.eliminarCita(this.testCitaa))
+
+        this.testHosp.registrarDoctor(this.testDoct)
+        this.testHosp.registrarCita(this.testCitaa)
+
+        //tests 2
+        console.log(this.testHosp.buscarDoctor(this.testDoct))
+        console.log(this.testHosp.buscarCita(this.testCitaa))
+        console.log(this.testHosp.eliminarDoctor(this.testDoct))
+        console.log(this.testHosp.eliminarCita(this.testCitaa))
+
+        this.testHosp.listarDoctores()
+        this.testHosp.listarCitas()
+
+        //tests 3
+        console.log(this.testHosp.registrarDoctor(this.testDoct))
+        console.log(this.testHosp.registrarCita(this.testCitaa))
+        console.log(this.testHosp.registrarDoctor(this.testDoct))
+        console.log(this.testHosp.registrarCita(this.testCitaa))
+
+        console.log(this.testHosp.modificarDoctor(this.testDoct, this.testDoct))
+        console.log(this.testHosp.modificarCita(this.testCitaa, this.testCitaa))
+        this.testHosp.listarDoctores()
+        this.testHosp.listarCitas()
+    }
 }
 
-let app = new Main()
-app.getPaciente()
+let test = new Main();
+test.testNombre();
+test.testDoc();
+test.testPac();
+test.testCita();
+test.testHospital();
