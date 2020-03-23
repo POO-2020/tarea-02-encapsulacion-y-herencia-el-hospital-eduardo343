@@ -10,8 +10,8 @@ import PacienteAsegurado from "./pacienteAsegurado.js"
 class Main{//${this.}
 
     constructor(){
-        this.testPepe = new Nombre("Pepe","Hernandez","Rodrigo")
-        this.testGarcia = new Nombre("Garcia", "Correas", "Flores")
+        this.testPepe = new Nombre("valenti","elizalde","el gallo de oro")
+        this.testGarcia = new Nombre("manuel", "Correas", "gonzales")
         this.testTiempo = new Tiempo(7,53,"pm")
 
         let datosPaciente = {
